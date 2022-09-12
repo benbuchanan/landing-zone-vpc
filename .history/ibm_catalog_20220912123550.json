@@ -1,0 +1,94 @@
+{
+    "name": "vpc-solution",
+    "version": "0.0.1",
+    "flavors": [
+        {
+            "label": "QuickStart",
+            "name": "quickstart",
+            "compliance": {
+                "controls": [
+                    {
+                        "profile_name": "IBM Cloud for Financial Services v0.5.0",
+                        "control_id": "AC-3"
+                    },
+                    {
+                        "profile_name": "IBM Cloud for Financial Services v0.5.0",
+                        "control_id": "AC-4"
+                    },
+                    {
+                        "profile_name": "IBM Cloud for Financial Services v0.5.0",
+                        "control_id": "AC-6-0"
+                    },
+                    {
+                        "profile_name": "IBM Cloud for Financial Services v0.5.0",
+                        "control_id": "AU-2(a)"
+                    },
+                    {
+                        "profile_name": "IBM Cloud for Financial Services v0.5.0",
+                        "control_id": "IA-4"
+                    },
+                    {
+                        "profile_name": "IBM Cloud for Financial Services v0.5.0",
+                        "control_id": "SC-8-0"
+                    },
+                    {
+                        "profile_name": "IBM Cloud for Financial Services v0.5.0",
+                        "control_id": "RA-5(a)"
+                    },
+                    {
+                        "profile_name": "IBM Cloud for Financial Services v0.5.0",
+                        "control_id": "SC-12"
+                    },
+                    {
+                        "profile_name": "IBM Cloud for Financial Services v0.5.0",
+                        "control_id": "SC-13"
+                    },
+                    {
+                        "profile_name": "IBM Cloud for Financial Services v0.5.0",
+                        "control_id": "SC-36"
+                    }
+                ]
+            },
+            "iam_permissions": [
+                {
+                    "role_crns": [
+                        "crn:v1:bluemix:public:iam-identity::::serviceRole:ServiceIdCreator",
+                        "crn:v1:bluemix:public:iam-identity::::serviceRole:UserApiKeyCreator",
+                        "crn:v1:bluemix:public:iam::::role:Administrator"
+                    ],
+                    "service_name": "iam-identity"
+                },
+                {
+                    "role_crns": [
+                        "crn:v1:bluemix:public:iam::::serviceRole:Manager",
+                        "crn:v1:bluemix:public:iam::::role:Administrator"
+                    ],
+                    "service_name": "is.vpc"
+                }
+            ],
+            "architecture": {
+                "descriptions": "",
+                "features": [
+                    {
+                        "title": "Multi Zone",
+                        "description": "VPC spanning 3 availability zones"
+                    },
+                    {
+                        "title": "Public VSI",
+                        "description": "VSI with floating IP public access"
+                    }
+                ],
+                "diagrams": [
+                    {
+                        "diagram": {
+                            "caption": "Landing Zone VPC",
+                            "url": "https://globalcatalog.test.cloud.ibm.com/api/v1/goldeneye-artifacts/artifacts/slz-vsi.drawio.svg",
+                            "metadata": []
+                        },
+                        "description": "The **QuickStart** flavor of Secure Landing Zone VPC provide a sample solution onboarded to the IBM public cloud catalog."
+                    }
+                ]
+            }
+        }
+    ]
+}

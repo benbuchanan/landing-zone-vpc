@@ -33,3 +33,32 @@ variable "resource_tags" {
   type        = list(string)
   default     = null
 }
+
+variable "machine_type" {
+  description = "VSI machine type"
+  type        = string
+  default     = "cx2-2x4"
+}
+
+variable "image_id" {
+  description = "Image ID used for VSI. Run 'ibmcloud is images' to find available images. Be aware that region is important for the image since the id's are different in each region."
+  type        = string
+  default     = "r006-1366d3e6-bf5b-49a0-b69a-8efd93cc225f"
+}
+
+variable "ssh_key_id" {
+  type        = string
+  description = "An existing ssh key id to use"
+}
+
+variable "vsi_floating_ip" {
+  description = "Add floating IP to VSIs"
+  type        = bool
+  default     = false
+}
+
+variable "vsi_per_subnet" {
+  description = "Number of VSI instances for each subnet"
+  type        = number
+  default     = 1
+}

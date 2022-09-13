@@ -1,10 +1,11 @@
 {
     "name": "vpc-solution",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "flavors": [
         {
             "label": "QuickStart",
             "name": "quickstart",
+            "working_directory": "examples/default",
             "compliance": {
                 "controls": [
                     {

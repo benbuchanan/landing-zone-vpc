@@ -43,7 +43,7 @@ variable "machine_type" {
 variable "image_id" {
   description = "Image ID used for VSI. Run 'ibmcloud is images' to find available images. Be aware that region is important for the image since the id's are different in each region."
   type        = string
-  default     = "r006-1366d3e6-bf5b-49a0-b69a-8efd93cc225f"
+  default     = "r134-ab47c72d-b11c-417b-a442-9f1ca6a6f5ed"
 }
 
 variable "ssh_key_id" {

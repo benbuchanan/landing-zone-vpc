@@ -75,8 +75,16 @@
                         "description": "VPC spanning 3 availability zones"
                     },
                     {
-                        "title": "Public VSI",
-                        "description": "VSI with floating IP public access"
+                        "title": "VSIs",
+                        "description": "One or more VSIs per availability zone"
+                    },
+                    {
+                        "title": "Public Gateway",
+                        "description": "Optional public gateway"
+                    },
+                    {
+                        "title": "Floating IP",
+                        "description": "Optional floating for VSIs"
                     }
                 ],
                 "diagrams": [

@@ -13,13 +13,13 @@ variable "region" {
 variable "prefix" {
   description = "The prefix that you would like to append to your resources"
   type        = string
-  default     = "test-landing-zone"
+  default     = "sol-vpc"
 }
 
 variable "name" {
-  description = "The name of the vpc"
+  description = "The name the VPC will be created with"
   type        = string
-  default     = "vpc"
+  default     = "solution"
 }
 
 variable "resource_group" {
@@ -54,7 +54,7 @@ variable "ssh_key_id" {
 variable "vsi_floating_ip" {
   description = "Add floating IP to VSIs"
   type        = bool
-  default     = false
+  default     = true
 }
 
 variable "vsi_per_subnet" {

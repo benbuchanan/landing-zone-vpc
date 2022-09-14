@@ -29,8 +29,6 @@
             "iam_permissions": [
                 {
                     "role_crns": [
-                        "crn:v1:bluemix:public:iam-identity::::serviceRole:ServiceIdCreator",
-                        "crn:v1:bluemix:public:iam-identity::::serviceRole:UserApiKeyCreator",
                         "crn:v1:bluemix:public:iam::::role:Administrator"
                     ],
                     "service_name": "iam-identity"
@@ -66,11 +64,11 @@
                 "diagrams": [
                     {
                         "diagram": {
-                            "caption": "Quick Start Landing Zone VPC",
+                            "caption": "Quick start Landing Zone VPC",
                             "url": "https://raw.githubusercontent.com/gmendel/landing-zone-vpc/main/.docs/vpc-quickstart.svg",
                             "metadata": []
                         },
-                        "description": "The **QuickStart** flavor of the VPC solution provides a small configuration, publicity facing VPC for the cloud"
+                        "description": "The **QuickStart** variation of the VPC solution provides a small configuration, with a public facing VPC for the cloud"
                     }
                 ]
             }
@@ -122,8 +120,6 @@
             "iam_permissions": [
                 {
                     "role_crns": [
-                        "crn:v1:bluemix:public:iam-identity::::serviceRole:ServiceIdCreator",
-                        "crn:v1:bluemix:public:iam-identity::::serviceRole:UserApiKeyCreator",
                         "crn:v1:bluemix:public:iam::::role:Administrator"
                     ],
                     "service_name": "iam-identity"
@@ -155,11 +151,11 @@
                 "diagrams": [
                     {
                         "diagram": {
-                            "caption": "Landing Zone VPC",
+                            "caption": "Standard Landing Zone VPC",
                             "url": "https://raw.githubusercontent.com/gmendel/landing-zone-vpc/main/.docs/vpc-standard.svg",
                             "metadata": []
                         },
-                        "description": "The **Standard** flavor of the VPC Solution provides a large configuration for a secure VPC for the cloud."
+                        "description": "The **Standard** variation of the VPC Solution provides a large configuration for a secure VPC for the cloud."
                     }
                 ]
             }

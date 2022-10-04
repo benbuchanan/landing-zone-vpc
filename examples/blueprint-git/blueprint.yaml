@@ -1,0 +1,75 @@
+name: "vpc-solution"
+schema_version: "1.0.0"
+type: "blueprint"
+description: "Landing zone vpc solution"
+settings:
+  - name: TF_LOG
+    value: "DEBUG"
+inputs:
+  - name: ibmcloud_api_key
+  - name: region
+  - name: prefix
+  - name: name
+  - name: resource_group_id
+  - name: resource_tags
+  - name: machine_type
+  - name: image_id
+  - name: ssh_key_ids
+  - name: vsi_floating_ip
+  - name: vsi_per_subnet
+modules:
+  - module_type: terraform
+    name: "slz_vpc"
+    source:
+      git: 
+        source_type: github
+        git_repo_url: "https://github.com/terraform-ibm-modules/terraform-ibm-landing-zone-vpc"
+        git_branch: "v2.3.0"
+    inputs:
+      - name: resource_group_id
+        value: $blueprint.resource_group_id
+      - name: prefix
+        value: $blueprint.prefix
+      - name: region
+        value: $blueprint.region
+      - name: name
+        value: $blueprint.name
+      - name: tags
+        value: $blueprint.resource_tags
+    outputs:
+      - name: subnet_zone_list
+      - name: vpc_id
+  - module_type: terraform
+    name: "slz_vsi"
+    source:
+      git: 
+        source_type: github
+        git_repo_url: "https://github.com/terraform-ibm-modules/terraform-ibm-landing-zone-vsi.git"
+        git_branch: "v1.1.3"
+    inputs:
+      - name: resource_group_id
+        value: $blueprint.resource_group_id
+      - name: image_id
+        value: $blueprint.image_id
+      - name: create_security_group
+        value: false
+      - name: tags
+        value: $blueprint.resource_tags
+      - name: subnets
+        value: $workitem.slz_vpc.subnet_zone_list
+      - name: vpc_id
+        value: $workitem.slz_vpc.vpc_id
+      - name: prefix
+        value: $blueprint.prefix
+      - name: machine_type
+        value: $blueprint.machine_type
+      - name: user_data
+        value: null
+      - name: boot_volume_encryption_key
+        value: null
+      - name: vsi_per_subnet
+        value: $blueprint.vsi_per_subnet
+      - name: ssh_key_ids
+        value: $blueprint.ssh_key_ids
+      - name: enable_floating_ip
+        value: vsi_floating_ip

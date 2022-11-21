@@ -1,3 +1,9 @@
+variable "preset_configuration_id" {
+  description = "ID of preset configuration to configure and override variables"
+  type = string
+  default = ""
+}
+
 variable "ibmcloud_api_key" {
   description = "APIkey that's associated with the account to provision resources to"
   type        = string

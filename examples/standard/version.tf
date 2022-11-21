@@ -7,5 +7,10 @@ terraform {
       source  = "IBM-Cloud/ibm"
       version = "1.45.0"
     }
+
+    ibm_test = {
+      source = "JonWoodlief/catalog"
+      version = "3.0.1"
+    }
   }
 }

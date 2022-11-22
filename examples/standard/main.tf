@@ -54,7 +54,7 @@ module "slz_vsi" {
   user_data                  = null
   boot_volume_encryption_key = null
   vsi_per_subnet             = local.vsi_per_subnet
-  ssh_key_ids                = [local.ssh_key_id]
+  ssh_key_ids                = [var.ssh_key_id]
   enable_floating_ip         = local.vsi_floating_ip
 }
 
@@ -62,7 +62,7 @@ module "slz_vsi" {
 # Configure overrides
 #############################################################################
 
-data "ibm-test_cm_preset" "preset_configuration" {
+data "ibm_cm_preset" "preset_configuration" {
   count = var.preset_id != "" && var.preset_id != null ? 1 : 0
   id = var.preset_id
 }

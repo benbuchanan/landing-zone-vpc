@@ -62,7 +62,7 @@ module "slz_vsi" {
 # Configure overrides
 #############################################################################
 
-data "ibm_test_cm_preset" "preset_configuration" {
+data "ibm-test_cm_preset" "preset_configuration" {
   count = var.preset_id != "" && var.preset_id != null ? 1 : 0
   id = var.preset_id
 }

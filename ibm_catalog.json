@@ -1,6 +1,6 @@
 {
     "name": "vpc-solution",
-    "version": "0.0.6",
+    "version": "0.0.10",
     "flavors": [
         {
             "label": "QuickStart",

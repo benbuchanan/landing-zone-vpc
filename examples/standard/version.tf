@@ -8,7 +8,7 @@ terraform {
       version = "1.45.0"
     }
 
-    ibm-test = {
+    catalog = {
       source = "JonWoodlief/catalog"
       version = "3.0.1"
     }

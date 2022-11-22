@@ -1,4 +1,4 @@
-variable "preset_configuration_id" {
+variable "preset_id" {
   description = "ID of preset configuration to configure and override variables"
   type = string
   default = ""

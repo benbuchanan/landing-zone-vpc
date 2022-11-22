@@ -4,7 +4,7 @@
 ##############################################################################
 
 resource "ibm_resource_group" "resource_group" {
-  count    = loacl.resource_group != null ? 0 : 1
+  count    = local.resource_group != null ? 0 : 1
   name     = "${local.prefix}-rg"
   quota_id = null
 }
@@ -63,6 +63,7 @@ module "slz_vsi" {
 #############################################################################
 
 data "ibm_cm_preset" "preset_configuration" {
+  provider = catalog
   count = var.preset_id != "" && var.preset_id != null ? 1 : 0
   id = var.preset_id
 }

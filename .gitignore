@@ -58,3 +58,6 @@ Brewfile.lock.json
 # draw io
 **/.*tmp
 **/*.drawio.bkp
+
+# Ignore vscode
+.vscode

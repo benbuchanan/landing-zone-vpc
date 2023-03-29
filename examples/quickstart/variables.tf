@@ -4,6 +4,12 @@ variable "ibmcloud_api_key" {
   sensitive   = true
 }
 
+variable "resource_group" {
+  type        = string
+  description = "An existing resource group name to use for this example, if unset a new resource group will be created"
+  default     = null
+}
+
 variable "region" {
   description = "The region to which to deploy the VPC"
   type        = string
@@ -13,19 +19,7 @@ variable "region" {
 variable "prefix" {
   description = "The prefix that you would like to append to your resources"
   type        = string
-  default     = "sol-vpc"
-}
-
-variable "name" {
-  description = "The name the VPC will be created with"
-  type        = string
-  default     = "solution"
-}
-
-variable "resource_group" {
-  type        = string
-  description = "An existing resource group name to use for this example, if unset a new resource group will be created"
-  default     = null
+  default     = "test-landing-zone-vsi"
 }
 
 variable "resource_tags" {
@@ -34,31 +28,83 @@ variable "resource_tags" {
   default     = null
 }
 
+variable "image_id" {
+  description = "Image ID used for VSI. Run 'ibmcloud is images' to find available images. Be aware that region is important for the image since the id's are different in each region."
+  type        = string
+  default     = "r006-1366d3e6-bf5b-49a0-b69a-8efd93cc225f"
+}
+
 variable "machine_type" {
   description = "VSI machine type"
   type        = string
   default     = "cx2-2x4"
 }
 
-variable "image_id" {
-  description = "Image ID used for VSI. Run 'ibmcloud is images' to find available images. Be aware that region is important for the image since the id's are different in each region."
+variable "create_security_group" {
+  description = "Create security group for VSI"
   type        = string
-  default     = "r134-ab47c72d-b11c-417b-a442-9f1ca6a6f5ed"
+  default     = false
 }
 
-variable "ssh_key_id" {
-  type        = string
-  description = "An existing ssh key id to use"
+variable "security_group" {
+  description = "Security group created for VSI"
+  type = object({
+    name = string
+    rules = list(
+      object({
+        name      = string
+        direction = string
+        source    = string
+        tcp = optional(
+          object({
+            port_max = number
+            port_min = number
+          })
+        )
+        udp = optional(
+          object({
+            port_max = number
+            port_min = number
+          })
+        )
+        icmp = optional(
+          object({
+            type = number
+            code = number
+          })
+        )
+      })
+    )
+  })
+  default = null
 }
 
-variable "vsi_floating_ip" {
-  description = "Add floating IP to VSIs"
-  type        = bool
-  default     = true
+variable "user_data" {
+  description = "User data to initialize VSI deployment"
+  type        = string
+  default     = null
+}
+
+variable "boot_volume_encryption_key" {
+  description = "CRN of boot volume encryption key"
+  type        = string
+  default     = null
 }
 
 variable "vsi_per_subnet" {
   description = "Number of VSI instances for each subnet"
   type        = number
   default     = 1
+}
+
+variable "ssh_key" {
+  type        = string
+  description = "An existing ssh key name to use for this example, if unset a new ssh key will be created"
+  default     = null
+}
+
+variable "vpc_name" {
+  type        = string
+  description = "Name for VPC"
+  default     = "vpc"
 }

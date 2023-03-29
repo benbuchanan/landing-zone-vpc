@@ -39,7 +39,7 @@ data "ibm_is_vpc" "vpc" {
 
 
 module "slz_vsi" {
-  source = "git::https://github.com/terraform-ibm-modules/terraform-ibm-landing-zone-vsi.git?ref=v1.1.3"
+  source = "git::https://github.com/terraform-ibm-modules/terraform-ibm-landing-zone-vsi.git?ref=v2.0.0"
 
   resource_group_id = local.resource_group != null ? data.ibm_resource_group.existing_resource_group[0].id : ibm_resource_group.resource_group[0].id
 
@@ -64,24 +64,24 @@ module "slz_vsi" {
 
 data "ibm_cm_preset" "preset_configuration" {
   provider = catalog
-  count = var.preset_id != "" && var.preset_id != null ? 1 : 0
-  id = var.preset_id
+  count    = var.preset_id != "" && var.preset_id != null ? 1 : 0
+  id       = var.preset_id
 }
 
 locals {
   override = {
-    vars = jsondecode("{}")
+    vars             = jsondecode("{}")
     preset_overrides = jsondecode(var.preset_id != "" ? data.ibm_cm_preset.preset_configuration[0].preset : "{}")
   }
   override_type = var.preset_id != "" && var.preset_id != null ? "preset_overrides" : "vars"
 
-  region = lookup(local.override[local.override_type], "region", var.region)
-  prefix = lookup(local.override[local.override_type], "prefix", var.prefix)
-  name = lookup(local.override[local.override_type], "name", var.name)
-  resource_group = lookup(local.override[local.override_type], "resource_group", var.resource_group)
-  resource_tags = lookup(local.override[local.override_type], "resource_tags", var.resource_tags)
-  machine_type = lookup(local.override[local.override_type], "machine_type", var.machine_type)
-  image_id = lookup(local.override[local.override_type], "image_id", var.image_id)
+  region          = lookup(local.override[local.override_type], "region", var.region)
+  prefix          = lookup(local.override[local.override_type], "prefix", var.prefix)
+  name            = lookup(local.override[local.override_type], "name", var.name)
+  resource_group  = lookup(local.override[local.override_type], "resource_group", var.resource_group)
+  resource_tags   = lookup(local.override[local.override_type], "resource_tags", var.resource_tags)
+  machine_type    = lookup(local.override[local.override_type], "machine_type", var.machine_type)
+  image_id        = lookup(local.override[local.override_type], "image_id", var.image_id)
   vsi_floating_ip = lookup(local.override[local.override_type], "vsi_floating_ip", var.vsi_floating_ip)
-  vsi_per_subnet = lookup(local.override[local.override_type], "vsi_per_subnet", var.vsi_per_subnet)
+  vsi_per_subnet  = lookup(local.override[local.override_type], "vsi_per_subnet", var.vsi_per_subnet)
 }

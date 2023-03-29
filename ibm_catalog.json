@@ -5,6 +5,7 @@
         {
             "label": "QuickStart",
             "name": "quickstart",
+            "install_type": "fullstack",
             "working_directory": "examples/quickstart",
             "compliance": {
                 "controls": [

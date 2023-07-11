@@ -7,6 +7,12 @@
             "name": "quickstart",
             "install_type": "fullstack",
             "working_directory": "examples/quickstart",
+            "licenses": [
+                {
+                    "name": "my license",
+                    "url": "test.license.url"
+                }
+            ],
             "compliance": {
                 "authority": "scc-v3",
                 "controls": [
